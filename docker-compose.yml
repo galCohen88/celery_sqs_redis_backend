@@ -1,0 +1,27 @@
+version: '2'
+services:
+  api:
+    build: .
+    ports:
+      - 5000:5000
+    command: python svc/app/api.py
+    depends_on:
+      - sqs
+      - redis
+  celery:
+    build: .
+    command: celery -A svc.tasks.tasks worker -l info
+    depends_on:
+      - sqs
+      - redis
+  redis:
+    container_name: redis
+    image: "redis:2.8"
+    ports:
+      - 6379:6379
+  sqs:
+    image: roribio16/alpine-sqs
+    ports:
+       - 9324:9324
+       - 9325:9325
+    container_name: alpine-sqs
