@@ -19,5 +19,5 @@ to see SQS queues using web browser go to
 
 http://localhost:9325
 
-![Messages in control panel](Q.png?raw=true "TFT screen")
+![Messages in control panel](QQ.png?raw=true "TFT screen")
 
