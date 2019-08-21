@@ -12,7 +12,11 @@ def hello_world():
 @app.route('/task')
 def task():
     time = int(request.args.get('time'))
-    long_task.delay(time)
+    block = bool(request.args.get('block'))
+    async_task = long_task.delay(time)
+    if block:
+        result = async_task.get()
+        return 'waited %s blocking seconds' % str(result)
     return 'added new task to the Q'
 
 

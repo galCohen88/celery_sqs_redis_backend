@@ -1,7 +1,6 @@
 import time
 from celery import Celery
 
-
 app = Celery()
 
 # app.conf.broker_url = 'sqs://localhost:9324/queue'
@@ -15,3 +14,4 @@ def long_task(task_time_secs):
     for i in range(0, task_time_secs):
         time.sleep(1)
         print(str(i))
+    return task_time_secs
