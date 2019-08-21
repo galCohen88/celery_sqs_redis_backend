@@ -15,4 +15,4 @@ def task():
     return 'added new task to the Q'
 
 
-app.run('localhost', 5000)
+app.run(host="0.0.0.0", debug=True)
