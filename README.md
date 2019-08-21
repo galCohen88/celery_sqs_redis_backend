@@ -1,6 +1,4 @@
-# Example dockerized celery project, with SQS broker and redis for results backend 
-
-Dockerized celery project with SQS broker and Redis for results backend
+# Dockerized celery project with SQS broker and Redis for results backend
 
 #### Start
 
