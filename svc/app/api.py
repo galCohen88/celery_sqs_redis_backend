@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from svc.tasks.tasks import long_task
 
 app = Flask(__name__)
@@ -11,7 +11,8 @@ def hello_world():
 
 @app.route('/task')
 def task():
-    long_task.delay()
+    time = int(request.args.get('time'))
+    long_task.delay(time)
     return 'added new task to the Q'
 
 

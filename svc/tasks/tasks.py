@@ -11,9 +11,7 @@ app.conf.result_backend = 'redis://redis:6379/0'
 
 
 @app.task(acks_late=True)
-def long_task():
-    count = 0
-    while True:
-        count += 1
+def long_task(task_time_secs):
+    for i in range(0, task_time_secs):
         time.sleep(1)
-        print(str(count))
+        print(str(i))
