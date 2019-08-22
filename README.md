@@ -12,13 +12,11 @@ $ docker-compose ps
 
 Add job to SQS queue 
 
-$ curl http://localhost:5000/task
+$ curl http://localhost:5000/task?time=30&block=true
 
 time - how much time will the task run
 
 block - should API endpoint wait for task result to be returned 
-
-$ curl http://localhost:5000/task?time=30&block=true
 
 Add job that will end up in dead letter Q
 
