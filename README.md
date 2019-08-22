@@ -8,9 +8,9 @@ $ docker-compose ps
 
 ![After up](svcs.png?raw=true "TFT screen")
 
-#### API endpoints
+#### API endpoints (exposed to host)
 
-Add job to SQS queue (from host)
+Add job to SQS queue 
 
 $ curl http://localhost:5000/task
 
