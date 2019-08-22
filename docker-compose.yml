@@ -20,7 +20,9 @@ services:
     ports:
       - 6379:6379
   sqs:
-    image: roribio16/alpine-sqs
+    # for using forked version (alpine-sqs:dev), please clone https://github.com/galCohen88/alpine-sqs and run
+    # $ docker-compose -f docker-compose.build up -d --build
+    image: alpine-sqs:dev
     ports:
        - 9324:9324
        - 9325:9325
