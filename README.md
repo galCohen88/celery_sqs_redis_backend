@@ -21,8 +21,8 @@ block - should API endpoint wait for task result to be returned
 $ curl http://localhost:5000/task?time=30&block=true
 
 #### Visibility Timeout
-Currently configured to 30 seconds
-Please note that if you add new task with time>30 duplication will occur
+The default Q is configured with 10 seconds  
+Please note that if you pass time>10 duplications will occur
 
 #### SQS control panel
 to see SQS queues using web browser go to 

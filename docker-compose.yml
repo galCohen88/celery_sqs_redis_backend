@@ -10,7 +10,7 @@ services:
       - redis
   celery:
     build: .
-    command: celery -A svc.tasks.tasks worker -l info
+    command: celery -A svc.tasks.tasks worker -Q default -l info
     depends_on:
       - sqs
       - redis
