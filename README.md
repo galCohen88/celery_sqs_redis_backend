@@ -8,17 +8,24 @@ $ docker-compose ps
 
 ![After up](svcs.png?raw=true "TFT screen")
 
-#### Add job to SQS queue (from host)
+#### API endpoints (exposed to host)
 
-$ curl http://localhost:5000/task
+Add job to SQS queue 
 
-#### Task arguments
+$ curl http://localhost:5000/task?time=30&block=true
 
 time - how much time will the task run
 
 block - should API endpoint wait for task result to be returned 
 
-$ curl http://localhost:5000/task?time=30&block=true
+Add job that will end up in dead letter Q
+
+$ curl http://localhost:5000/dlq_task
+
+Add job that return the same message to the Q
+
+$ curl http://localhost:5000/retry
+
 
 #### Visibility Timeout
 The default Q is configured with 10 seconds  
@@ -33,7 +40,7 @@ if you like to work with DQL, please see my fork for its repo, where I configure
 https://github.com/galCohen88/alpine-sqs
 
 and build the image 
-$ docker-compose -f docker-compose.build up -d --build
+$ docker-compose -f docker-compose.build build
 
 
 #### SQS control panel
