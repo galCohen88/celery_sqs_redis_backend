@@ -9,7 +9,8 @@ app = Celery()
 def on_unknown_task(self, body, message, exc):
     task_name = message.headers.get('task')
     task_id = message.headers.get('id')
-    print(f'[on_unknown_task] Ignoring and acknowledging message for unknown task. Task name: {task_name}, Task id: {task_id}')
+    print(f'[on_unknown_task] Ignoring and acknowledging message for '
+          f'unknown task. Task name: {task_name}, Task id: {task_id}')
     message.ack()
 
 
