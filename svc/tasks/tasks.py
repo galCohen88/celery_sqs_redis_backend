@@ -1,8 +1,19 @@
 import time
 from celery import Celery
+from celery.worker.consumer import Consumer
 from kombu import Queue
 
 app = Celery()
+
+
+def on_unknown_task(self, body, message, exc):
+    task_name = message.headers.get('task')
+    task_id = message.headers.get('id')
+    print(f'[on_unknown_task] Ignoring and acknowledging message for unknown task. Task name: {task_name}, Task id: {task_id}')
+    message.ack()
+
+
+Consumer.on_unknown_task = on_unknown_task
 
 # app.conf.broker_url = 'sqs://localhost:9324/queue'
 # app.conf.result_backend = 'redis://localhost:6379/0'
